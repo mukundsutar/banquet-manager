@@ -3,7 +3,7 @@ import type { ICategoryData } from "../../lib/types";
 import MenuIcon from "@mui/icons-material/Menu";
 import { toastSuccess, toastWarn } from "../../lib/configs/toast-config";
 import { useMediaQuery } from "react-responsive";
-import { useState, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import { WhatsappIcon, WhatsappShareButton } from "react-share";
 
 interface NavbarProps {
