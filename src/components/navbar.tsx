@@ -4,7 +4,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { toastSuccess, toastWarn } from "../../lib/configs/toast-config";
 import { useMediaQuery } from "react-responsive";
 import { type Dispatch, type SetStateAction } from "react";
-import { WhatsappIcon, WhatsappShareButton } from "react-share";
 
 interface NavbarProps {
   label: string;
@@ -97,16 +96,6 @@ export default function Navbar({
           <Button variant="outlined" color="inherit" onClick={handleCopy}>
             Finalize
           </Button>
-
-          <div>
-            <WhatsappShareButton
-              url={"here"}
-              title={"Selected Menu"}
-              separator=": "
-            >
-              <WhatsappIcon size={32} round />
-            </WhatsappShareButton>
-          </div>
         </div>
       </Toolbar>
     </AppBar>
