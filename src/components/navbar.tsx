@@ -59,12 +59,10 @@ export default function Navbar({
     }
 
     try {
-      // await navigator.clipboard.writeText(result ?? "");
+      await navigator.clipboard.writeText(result ?? "");
 
       await navigator.share({
-        title: "web.dev",
-        text: "Check out web.dev.",
-        url: "https://web.dev/",
+        text: result,
       });
 
       toastSuccess("Copied to clipboard!");
