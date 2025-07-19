@@ -3,7 +3,8 @@ import type { ICategoryData } from "../../lib/types";
 import MenuIcon from "@mui/icons-material/Menu";
 import { toastSuccess, toastWarn } from "../../lib/configs/toast-config";
 import { useMediaQuery } from "react-responsive";
-import type { Dispatch, SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
+import { WhatsappIcon, WhatsappShareButton } from "react-share";
 
 interface NavbarProps {
   label: string;
@@ -21,6 +22,8 @@ export default function Navbar({
   setIsDrawerOpen,
 }: NavbarProps) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+
+  // const [copyText, setCopyText] = useState(second);
 
   function compileMenu(): string {
     if (!menuData) return "";
@@ -45,7 +48,7 @@ export default function Navbar({
   async function handleCopy() {
     handleError();
 
-    const result = compileMenu();
+    const result = `${label}\n\n\n` + compileMenu();
 
     console.log(compileMenu());
 
@@ -56,7 +59,14 @@ export default function Navbar({
     }
 
     try {
-      await navigator.clipboard.writeText(result ?? "");
+      // await navigator.clipboard.writeText(result ?? "");
+
+      await navigator.share({
+        title: "web.dev",
+        text: "Check out web.dev.",
+        url: "https://web.dev/",
+      });
+
       toastSuccess("Copied to clipboard!");
     } catch (error) {
       console.log(error);
@@ -89,6 +99,16 @@ export default function Navbar({
           <Button variant="outlined" color="inherit" onClick={handleCopy}>
             Finalize
           </Button>
+
+          <div>
+            <WhatsappShareButton
+              url={"here"}
+              title={"Selected Menu"}
+              separator=": "
+            >
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+          </div>
         </div>
       </Toolbar>
     </AppBar>
