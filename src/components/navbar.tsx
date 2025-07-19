@@ -47,9 +47,7 @@ export default function Navbar({
   async function handleCopy() {
     handleError();
 
-    const result = `${label}\n\n\n` + compileMenu();
-
-    console.log(compileMenu());
+    const result = compileMenu();
 
     if (!result) {
       console.log("Please items from all categories!");
@@ -58,10 +56,12 @@ export default function Navbar({
     }
 
     try {
-      await navigator.clipboard.writeText(result ?? "");
+      const formattedText = `${label}\n\n\n` + result;
+
+      await navigator.clipboard.writeText(formattedText ?? "");
 
       await navigator.share({
-        text: result,
+        text: formattedText,
       });
 
       toastSuccess("Copied to clipboard!");
