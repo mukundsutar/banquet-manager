@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --toastify-color-progress-success: #4caf50;
+  --toastify-color-progress-error: #f44336;
+  --toastify-color-progress-info: #2196f3;
+  --toastify-color-progress-warning: #ffb74d;
+  --toastify-color-progress-default: #000000;
+}
